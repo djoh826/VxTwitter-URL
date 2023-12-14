@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "VxTwitter URL",
-  "version": "1.1",
+  "version": "1.2",
 
   "description": "Converts twitter.com URLs  to VXTwitter URLS when copying them.",
 
@@ -12,12 +12,12 @@
 
   "content_scripts": [
     {
-      "matches": [
-        "*://*.twitter.com/*",
-        "*://*.x.com/*",
-        "*://*.tweetdeck.com/*"
-      ],
-      "js": ["app.js"]
+      "matches": ["https://twitter.com/i/tweetdeck"],
+      "js": ["appTweetDeck.js"]
+    },
+    {
+      "matches": ["*://*.twitter.com/*", "*://*.x.com/*"],
+      "js": ["appTwitter.js"]
     }
   ],
 
