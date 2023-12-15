@@ -5,6 +5,7 @@ Supports twitter.com, x.com, and tweetdeck.
 
 ## Download
 Chrome: https://chromewebstore.google.com/detail/bdioigkngoclklbmmgegppmmekffpgdh/preview?hl=en
+
 Firefox: https://addons.mozilla.org/en-US/firefox/addon/vxtwitter-url-converter/
 
 ## Usage
