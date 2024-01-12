@@ -7,19 +7,19 @@ const convertUrl = (url) => {
   let newUrl;
 
   if (url.includes('vxtwitter.com')) {
-    console.log('VXTwitter link detected.');
+    // console.log('VXTwitter link detected.');
   } else if (url.includes('twitter.com')) {
-    console.log('Twitter link detected.');
+    // console.log('Twitter link detected.');
     let index = url.indexOf('twitter');
     newUrl = ''.concat(url.slice(0, index) + 'vx' + url.slice(index));
   } else if (url.includes('x.com')) {
-    console.log('X link detected.');
+    // console.log('X link detected.');
     let index = url.indexOf('x.com');
     newUrl = ''.concat(
       url.slice(0, index) + 'vxtwitter' + url.slice(index + 1)
     );
   } else {
-    console.log('Link not detected.');
+    // console.log('Link not detected.');
   }
 
   if (newUrl) {
@@ -41,17 +41,17 @@ const convertUrlSpoiler = (url) => {
   if (url.includes('vxtwitter.com')) {
     newUrl = url;
   } else if (url.includes('twitter.com')) {
-    console.log('Twitter link detected.');
+    // console.log('Twitter link detected.');
     let index = url.indexOf('twitter');
     newUrl = ''.concat(url.slice(0, index) + 'vx' + url.slice(index));
   } else if (url.includes('x.com')) {
-    console.log('X link detected.');
+    // console.log('X link detected.');
     let index = url.indexOf('x.com');
     newUrl = ''.concat(
       url.slice(0, index) + 'vxtwitter' + url.slice(index + 1)
     );
   } else {
-    console.log('Link not detected.');
+    // console.log('Link not detected.');
   }
 
   if (newUrl) {

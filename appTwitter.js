@@ -1,5 +1,3 @@
-let checkInterval;
-
 console.log('appTwitter.js loaded');
 
 // Function to convert URLs
@@ -7,19 +5,19 @@ const convertUrl = (url) => {
   let newUrl;
 
   if (url.includes('vxtwitter.com')) {
-    console.log('VXTwitter link detected.');
+    // console.log('VXTwitter link detected.');
   } else if (url.includes('twitter.com')) {
-    console.log('Twitter link detected.');
+    // console.log('Twitter link detected.');
     let index = url.indexOf('twitter');
     newUrl = ''.concat(url.slice(0, index) + 'vx' + url.slice(index));
   } else if (url.includes('x.com')) {
-    console.log('X link detected.');
+    // console.log('X link detected.');
     let index = url.indexOf('x.com');
     newUrl = ''.concat(
       url.slice(0, index) + 'vxtwitter' + url.slice(index + 1)
     );
   } else {
-    console.log('Link not detected.');
+    // console.log('Link not detected.');
   }
 
   if (newUrl) {
@@ -41,17 +39,17 @@ const convertUrlSpoiler = (url) => {
   if (url.includes('vxtwitter.com')) {
     newUrl = url;
   } else if (url.includes('twitter.com')) {
-    console.log('Twitter link detected.');
+    // console.log('Twitter link detected.');
     let index = url.indexOf('twitter');
     newUrl = ''.concat(url.slice(0, index) + 'vx' + url.slice(index));
   } else if (url.includes('x.com')) {
-    console.log('X link detected.');
+    // console.log('X link detected.');
     let index = url.indexOf('x.com');
     newUrl = ''.concat(
       url.slice(0, index) + 'vxtwitter' + url.slice(index + 1)
     );
   } else {
-    console.log('Link not detected.');
+    // console.log('Link not detected.');
   }
 
   if (newUrl) {
@@ -108,53 +106,30 @@ document.addEventListener('keydown', (event) => {
 
 // Function to be called when the text is found
 const handleTextFound = () => {
-  navigator.clipboard.readText().then((clipText) => {
-    convertUrl(clipText);
-  });
-
-  clearInterval(checkInterval);
+  navigator.clipboard
+    .readText()
+    .then((clipText) => {
+      convertUrl(clipText);
+    })
+    .catch((error) => {
+      // console.error('Clipboard read operation failed:', error);
+    });
 };
 
-// Options for the Mutation Observer
-const mutationObserverOptions = { childList: true, subtree: true };
+document.body.addEventListener(
+  'click',
+  (event) => {
+    if (event.isTrusted) {
+      handleTextFound();
+    }
+  },
+  true
+);
 
-// Function to check for "Copied to clipboard" alert
-const checkForText = () => {
-  const textElement = document.evaluate(
-    '//text()[contains(., "Copied to clipboard")]',
-    document,
-    null,
-    XPathResult.FIRST_ORDERED_NODE_TYPE,
-    null
-  ).singleNodeValue;
-
-  if (textElement) {
-    handleTextFound();
-  }
-};
-
-// Only start checking for text when body is clicked
-const startCheckingOnClick = () => {
-  // Clear the existing interval if it exists
-  clearInterval(checkInterval);
-
-  // Start checking for text
-  checkForText();
-
-  // Check every second indefinitely
-  checkInterval = setInterval(() => {
-    checkForText();
-  }, 1000);
-};
-
-// Event listener for body click
-document.body.addEventListener('click', startCheckingOnClick);
-
-// Set up a Mutation Observer to continuously observe changes in the DOM
-const observer = new MutationObserver(() => {
-  // Restart checking when the DOM changes
-  startCheckingOnClick();
+// observe changes in the DOM
+const observer = new MutationObserver((mutations) => {
+  handleTextFound();
 });
 
-// Start observing the entire document for changes
-observer.observe(document, mutationObserverOptions);
+// Start observing changes in the entire document
+observer.observe(document, { childList: true, subtree: true });
