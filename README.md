@@ -10,6 +10,6 @@ Chrome: https://chromewebstore.google.com/detail/bdioigkngoclklbmmgegppmmekffpgd
 Firefox: https://addons.mozilla.org/en-US/firefox/addon/vxtwitter-url-converter/
 
 ## Usage
-* Press the Share button -> Copy link on Twitter/TweetDeck, and it will automatically convert the url. Note: this works in English only.
+* Press the Share button -> Copy link on Twitter/TweetDeck, and it will automatically convert the url.
 * Ctrl + C (on a Twitter/TweetDeck page) will also convert any Twitter url on the clipboard to a vxtwitter link.
 * Ctrl + Q is the same functionality but also adding Discord spoiler tags to the url (||vxtwitter.com||).
