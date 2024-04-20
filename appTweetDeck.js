@@ -1,6 +1,6 @@
 let checkInterval;
 
-console.log('appTweetDeck.js loaded');
+// console.log('appTweetDeck.js loaded');
 
 // Function to convert URLs
 const convertUrl = (url) => {
@@ -8,11 +8,11 @@ const convertUrl = (url) => {
 
   if (url.includes('vxtwitter.com')) {
     // console.log('VXTwitter link detected.');
-  } else if (url.includes('twitter.com')) {
+  } else if (url.includes('//twitter.com')) {
     // console.log('Twitter link detected.');
     let index = url.indexOf('twitter');
     newUrl = ''.concat(url.slice(0, index) + 'vx' + url.slice(index));
-  } else if (url.includes('x.com')) {
+  } else if (url.includes('//x.com')) {
     // console.log('X link detected.');
     let index = url.indexOf('x.com');
     newUrl = ''.concat(
@@ -25,10 +25,10 @@ const convertUrl = (url) => {
   if (newUrl) {
     navigator.clipboard.writeText(newUrl).then(
       () => {
-        console.log('Clipboard write success');
+        // console.log('Clipboard write success');
       },
       () => {
-        console.log('Clipboard write failed');
+        // console.log('Clipboard write failed');
       }
     );
   }
@@ -40,11 +40,11 @@ const convertUrlSpoiler = (url) => {
 
   if (url.includes('vxtwitter.com')) {
     newUrl = url;
-  } else if (url.includes('twitter.com')) {
+  } else if (url.includes('//twitter.com')) {
     // console.log('Twitter link detected.');
     let index = url.indexOf('twitter');
     newUrl = ''.concat(url.slice(0, index) + 'vx' + url.slice(index));
-  } else if (url.includes('x.com')) {
+  } else if (url.includes('//x.com')) {
     // console.log('X link detected.');
     let index = url.indexOf('x.com');
     newUrl = ''.concat(
@@ -57,10 +57,10 @@ const convertUrlSpoiler = (url) => {
   if (newUrl) {
     navigator.clipboard.writeText(newUrl).then(
       () => {
-        console.log('Clipboard write success');
+        // console.log('Clipboard write success');
       },
       () => {
-        console.log('Clipboard write failed');
+        // console.log('Clipboard write failed');
       }
     );
   }
@@ -68,7 +68,10 @@ const convertUrlSpoiler = (url) => {
 
 // Function to check if the URL contains the word "status"
 const isTwitterPost = (url) => {
-  return url.includes('twitter.com') && url.includes('status');
+  return (
+    (url.includes('twitter.com') || url.includes('x.com')) &&
+    url.includes('status')
+  );
 };
 
 // Event listener for keydown
