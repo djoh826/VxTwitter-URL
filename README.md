@@ -5,7 +5,8 @@ Web Extension to convert copied Twitter urls to vxtwitter urls for better Discor
 Supports Twitter.com, X.com, and TweetDeck. I am not affiliated with vxTwitter/fixvx itself, check out their github page [here](https://github.com/dylanpdx/BetterTwitFix)
 
 ## Download
-Chrome: https://chromewebstore.google.com/detail/bdioigkngoclklbmmgegppmmekffpgdh/?hl=en
+Chrome: [https://chromewebstore.google.com/detail/bdioigkngoclklbmmgegppmmekffpgdh/?hl=en](https://chromewebstore.google.com/detail/bdioigkngoclklbmmgegppmmekffpgdh?hl=en
+)
 
 Firefox: https://addons.mozilla.org/en-US/firefox/addon/vxtwitter-url-converter/
 
