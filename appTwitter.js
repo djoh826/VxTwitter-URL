@@ -1,5 +1,15 @@
 // console.log('appTwitter.js loaded');
 
+const IS_MOBILE_CLIENT = (() => {
+  const ua = navigator.userAgent || '';
+  const isAndroid = /Android/i.test(ua);
+  const isMobile = /Mobile/i.test(ua);
+
+  return isAndroid || isMobile;
+})();
+
+// console.log('Mobile client = '+IS_MOBILE_CLIENT)
+
 // Loops every second to add new tweets loaded.
 setInterval(function timer() {
   const tweets = document.querySelectorAll(
@@ -21,8 +31,11 @@ function handleShare() {
   return function handleClick(event) {
     setTimeout(function hookToMenu() {
       // console.log('Share button clicked.');
-      const copyLinkButton = document.querySelector(
+      const copyLinkButton = !IS_MOBILE_CLIENT ? document.querySelector(
         '.r-1q9bdsx > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1)'
+      ) : 
+      document.querySelector(
+        '.r-1rnoaur > div:nth-child(1)'
       );
       if (copyLinkButton) {
         copyLinkButton.addEventListener(
